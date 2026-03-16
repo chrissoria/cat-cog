@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cat-cog"
+dynamic = ["version"]
+description = "Cognitive assessment and visual scoring powered by LLMs"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "GPL-3.0-or-later"
+keywords = ["llm", "cognitive assessment", "CERAD", "drawing scoring", "neuropsychological testing"]
+authors = [
+  { name = "Chris Soria", email = "chrissoria@berkeley.edu" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "cat-stack>=0.1.0",
+  "pandas",
+]
+
+[project.urls]
+Documentation = "https://github.com/chrissoria/cat-cog#readme"
+Issues = "https://github.com/chrissoria/cat-cog/issues"
+Source = "https://github.com/chrissoria/cat-cog"
+
+[tool.hatch.version]
+path = "src/cat_cog/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cat_cog"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/cat_cog/**/*.py",
+]
