@@ -236,7 +236,8 @@ def cerad_drawn_score(
     result_df['score'] = result_df['score'].astype('Int64')
 
     # Add image filename column
-    result_df['image_file'] = result_df['image_input'].apply(lambda x: Path(x).name if pd.notna(x) else None)
+    image_col = 'image_input' if 'image_input' in result_df.columns else 'input_data'
+    result_df['image_file'] = result_df[image_col].apply(lambda x: Path(x).name if pd.notna(x) else None)
 
     # Handle processing errors - set score to NA
     if 'processing_status' in result_df.columns:
