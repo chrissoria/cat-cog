@@ -23,7 +23,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
 ]
 dependencies = [
-  "cat-stack>=0.1.0",
+  "cat-stack>=1.0.19",
   "pandas",
 ]
 
@@ -33,12 +33,13 @@ Issues = "https://github.com/chrissoria/cat-cog/issues"
 Source = "https://github.com/chrissoria/cat-cog"
 
 [tool.hatch.version]
-path = "src/cat_cog/__about__.py"
+path = "src/catcog/__about__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/cat_cog"]
+packages = ["src/catcog", "src/cat_cog"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "src/cat_cog/**/*.py",
+    "src/catcog/**/*.py",
+    "src/cat_cog/__init__.py",
 ]

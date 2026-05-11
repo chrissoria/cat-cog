@@ -1,8 +1,8 @@
 # CERAD Constructional Praxis scoring function
-# Scores drawings of shapes (circles, diamonds, rectangles, cubes) using cat_stack.classify()
+# Scores drawings of shapes (circles, diamonds, rectangles, cubes) using catstack.classify()
 
 """
-This function wraps cat_stack.classify() to implement CERAD Constructional Praxis test scoring.
+This function wraps catstack.classify() to implement CERAD Constructional Praxis test scoring.
 It defines shape-specific categories, calls classify() for the LLM classification,
 then applies algorithmic scoring rules to convert binary classifications into CERAD scores.
 
@@ -15,7 +15,7 @@ Supported shapes:
 
 __all__ = ["cerad_drawn_score"]
 
-import cat_stack
+import catstack
 
 
 def cerad_drawn_score(
@@ -34,7 +34,7 @@ def cerad_drawn_score(
     """
     Score CERAD Constructional Praxis drawings using LLM image classification.
 
-    Delegates to cat_stack.classify() for the LLM call, then applies CERAD
+    Delegates to catstack.classify() for the LLM call, then applies CERAD
     scoring rules to convert binary classifications into numeric scores.
 
     Args:
@@ -48,7 +48,7 @@ def cerad_drawn_score(
         filename (str): Output filename for CSV
         save_directory (str): Directory to save results
         model_source (str): Provider - 'auto', 'openai', 'anthropic', 'google', 'mistral'
-        **kwargs: Additional arguments passed through to cat_stack.classify()
+        **kwargs: Additional arguments passed through to catstack.classify()
             (e.g., batch_mode, models, max_retries, embeddings, etc.)
 
     Returns:
@@ -116,9 +116,9 @@ def cerad_drawn_score(
     else:
         raise ValueError("Invalid shape! Choose from 'circle', 'diamond', 'rectangles', or 'cube'.")
 
-    # Call cat_stack.classify() to get binary classifications
+    # Call catstack.classify() to get binary classifications
     # CERAD categories are self-contained — disable "Other" auto-add and verbosity checks
-    result_df = cat_stack.classify(
+    result_df = catstack.classify(
         input_data=image_input,
         input_type="image",
         description=image_description,

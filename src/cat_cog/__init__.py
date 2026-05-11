@@ -1,10 +1,18 @@
-# SPDX-FileCopyrightText: 2025-present Christopher Soria <chrissoria@berkeley.edu>
-#
-# SPDX-License-Identifier: GPL-3.0-or-later
+"""Back-compat alias for `catcog`.
 
-from .__about__ import __version__
-from .cerad import cerad_drawn_score
+The canonical import name is `catcog`. `cat_cog` is retained so existing
+code continues to work; prefer `catcog` in new code.
+"""
+import importlib
+import sys
 
-__all__ = [
-    "cerad_drawn_score",
-]
+_canonical = "catcog"
+_real = importlib.import_module(_canonical)
+
+sys.modules[__name__] = _real
+
+_src_prefix = _canonical + "."
+_dst_prefix = __name__ + "."
+for _name in list(sys.modules):
+    if _name.startswith(_src_prefix):
+        sys.modules[_dst_prefix + _name[len(_src_prefix):]] = sys.modules[_name]
