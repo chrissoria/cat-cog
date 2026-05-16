@@ -17,7 +17,7 @@ This automatically installs `cat-stack` (the LLM classification engine).
 Score hand-drawn shapes (circle, diamond, overlapping rectangles, cube) using LLM vision models. The function sends images to the LLM, classifies drawing features, then applies CERAD scoring rules.
 
 ```python
-from cat_cog import cerad_drawn_score
+from catcog import cerad_drawn_score
 
 # Score circle drawings (max score: 2)
 results = cerad_drawn_score(
@@ -40,7 +40,7 @@ print(results[["image_file", "score"]])
 
 ### Using with multiple models
 
-All `cat_stack.classify()` parameters are available via `**kwargs`:
+All `catstack.classify()` parameters are available via `**kwargs`:
 
 ```python
 results = cerad_drawn_score(
